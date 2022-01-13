@@ -146,14 +146,3 @@ if __name__ == '__main__':
     experiment.train(100)
     index = 6
     experiment.evaluate(index)
-    #
-    # ind = 14
-    # for (gen_data, real_data, measurements) in experiment.train_dataset.take(1):
-    #     output1 = experiment.model(gen_data[ind:ind+1, :, :])
-    #     output2 = experiment.model(real_data[ind:ind+1, :, :])
-    #     print("real data outputs: ", tf.reduce_mean(output2))
-    #     print("gen data outputs: ", tf.reduce_mean(output1))
-    #     break
-    #
-    # experiment.evaluate(ind, 20, 0.01)
-    #

@@ -3,6 +3,10 @@ from tensorflow.keras import layers
 
 
 class ProximalL1Layer(layers.Layer):
+    """
+    Single layer for an unrolled optimization network performing least squares minimization with l1 constraints
+    solved using the Proximal Gradient Algorithm.
+    """
 
     def __init__(self, A, eta):
 

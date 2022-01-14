@@ -56,7 +56,7 @@ class UnrolledOptimization(BaseModel, ABC):
 
     def build(self):
 
-        def _create_model():
+        def _unrolled_proxgrad():
             X = tf.keras.layers.Input((2500, 1), dtype=tf.float32)
             Y = tf.keras.layers.Input((1560, 1), dtype=tf.float32)
             X_, Y_ = X, Y
@@ -67,7 +67,10 @@ class UnrolledOptimization(BaseModel, ABC):
             model = tf.keras.Model(inputs=[X, Y], outputs=[X_, Y_])
             return model
 
-        self.model = _create_model()
+        def _unrolled_admm():
+            pass
+
+        self.model = _unrolled_proxgrad()
         print(self.model.summary())
 
         self.optimizer = tf.keras.optimizers.Adam(learning_rate=0.0005)

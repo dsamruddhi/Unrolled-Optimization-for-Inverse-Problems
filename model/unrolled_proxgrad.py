@@ -9,7 +9,7 @@ from tensorflow.keras.layers import Dense, Conv2D, Activation, BatchNormalizatio
 
 from config import Config
 from base_model import BaseModel
-from layers.prox_l1_layer import ProximalL1Layer
+from layers.optimization_layers import ProximalL1Layer, ADMML1Layer
 from dataloader.data_loader import DataLoader
 from utils.plot_utils import PlotUtils
 from metric_functions.metrics import Metrics
@@ -66,9 +66,6 @@ class UnrolledOptimization(BaseModel, ABC):
                 x_recs.append(X_)
             model = tf.keras.Model(inputs=[X, Y], outputs=[X_, Y_])
             return model
-
-        def _unrolled_admm():
-            pass
 
         self.model = _unrolled_proxgrad()
         print(self.model.summary())
@@ -146,6 +143,6 @@ if __name__ == '__main__':
     experiment.load_data(show_data=False)
     experiment.build()
     experiment.log()
-    experiment.train(100)
+    experiment.train(20)
     index = 6
     experiment.evaluate(index)

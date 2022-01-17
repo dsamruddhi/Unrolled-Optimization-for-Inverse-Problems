@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras import layers
 
-from prox_operators import ProxOperators
+from layers.prox_operators import ProxOperators
 
 
 class ProximalL1Layer(layers.Layer):
